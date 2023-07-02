@@ -1,7 +1,41 @@
 ---
 
+# Commands
+# docker compose build # Builds the container(s).
+# docker compose build --no cache # Builds the containers
+#   without any caching.
+# docker compose up -d # To build or download all the containers
+#   if that has not already been done, and then start 
+#   them running in the background.
+# docker compose ps # To see which containers are running.
+# docker compose ps -a # To see all containers, running or not
+# docker compose down # To stop all of the containers.
+#   The up, stop, and rm commands can take services as arguments.
+#   That means you can start and stop individual containers,
+#   and delete them, as long as they are referenced in the 
+#   docker-compose.yml file.
+#   For example:
+#   docker compose up -d breadth_example_amd64
+#   docker compose stop breadth_example_amd64
+#   docker compose rm breadth_example_amd64
+# docker attach --detach-keys="ctrl-a,x" <name> # To attach to an 
+#   instance by name (from 'docker-compose ps'.) The detach keys 
+#   allow you to detach without having the instance exit.
+# docker exec -it <name> /bin/bash # To run a shell inside of a 
+#   running container. Logging out of the shell does not impact
+#   the container.
+# Notes:
+# - Hosts will be able to communicate with each other inside the 
+#   docker network by hostname, if there is more than one container
+#   running at the same time.
+
+# The docker compose file specification version that this file complies with.
 version: "3.8"
 
+# There may be multiple containers specified as 'services' below. 
+# They might be running on different architectures (platforms)
+# They might either have a rule for building them based on a 
+# Dockerfile, or reference a pre-built image from DockerHub.
 services:
   breadth_example_amd64:
     platform: linux/amd64
